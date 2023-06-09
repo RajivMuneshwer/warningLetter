@@ -14,7 +14,7 @@ export async function POST({ request }){
 
 	const res = await openai.createChatCompletion({
 		model: "gpt-3.5-turbo",
-		messages: [{role: "user", content: `Write a warning letter for an employee named '${employeeName}'? The employee committed the offence of ${offence}. The employee's penality is ${penality}. Encourage the employee to do better. And keep the response within 150 words.`}]
+		messages: [{role: "user", content: `Write a warning letter for an employee named '${employeeName}'? The employee committed the offence of ${offence}. The employee's penality is ${penality}. Encourage the employee to do better. Keep the response within 100 words.`}]
 	})
 
 	const returns = res.data.choices[0].message?.content
