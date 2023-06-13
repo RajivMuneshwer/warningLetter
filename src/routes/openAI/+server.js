@@ -12,10 +12,6 @@ export async function POST({ request }){
 	const { info } = await request.json()
 	const { employeeName, offence, penality } = info
 
-	const err = new Error("error")
-	err.cause = "504"
-	throw err
-	/*
 	const res = await openai.createChatCompletion({
 		model: "gpt-3.5-turbo",
 		messages: [{role: "user", content: `Write a warning letter for an employee named '${employeeName}'? The employee committed the offence of ${offence}. The employee's penality is ${penality}. Encourage the employee to do better. Keep the response within 100 words.`}]
@@ -24,5 +20,4 @@ export async function POST({ request }){
 	const returns = res.data.choices[0].message?.content
 
 	return json({returns}, {status: 201})
-	*/
 }
