@@ -35,7 +35,8 @@
 			}
 		});
 		if (response.status !== 201){
-			await submitInfo()
+			textInput = "** error **"
+			isDisabled = false
 			return
 		}
 		const {returns} = await response.json()
