@@ -34,11 +34,6 @@
 				'Content-Type': 'application/json'
 			}
 		});
-		if (response.status == 504){
-			textInput = "** error retry **"
-			isDisabled = false
-			return
-		}
 		const {returns} = await response.json()
 		textInput = returns
 		isDisabled = false
