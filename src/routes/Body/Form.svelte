@@ -34,8 +34,8 @@
 				'Content-Type': 'application/json'
 			}
 		});
-		if (response.status !== 201){
-			textInput = "** error **"
+		if (response.status == 504){
+			textInput = "** error retry **"
 			isDisabled = false
 			return
 		}
