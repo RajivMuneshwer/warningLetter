@@ -27,36 +27,27 @@
 			"offence":offence,
 			"penality":penality
 		}
-		const response = await fetch('/openAI', {
-			method: 'POST',
-			body: JSON.stringify({ info }),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
-
-		let response_ = await response.json()
-		console.log(response_)
-		let {returns, status} = response_
-
-
-		while (!returns) {
-			const response = await fetch('/openAI', {
+		let response
+		try{
+			response = await fetch('/openAI', {
 				method: 'POST',
 				body: JSON.stringify({ info }),
 				headers: {
 					'Content-Type': 'application/json'
 				}
 			});
-
-			let { returns_} = await response.json()
-			returns = returns_
-
 		}
-
-		textInput = returns
-
-		isDisabled = false
+		catch(err){
+			console.log(err)
+		}
+		if (response){
+			const {returns} = await response.json()
+			textInput = returns
+			isDisabled = false
+			return
+		}
+		submitInfo()
+		return
 	}
 
 </script>
